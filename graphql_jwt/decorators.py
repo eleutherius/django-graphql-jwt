@@ -98,6 +98,7 @@ def token_auth(f):
             request=context,
             username=username,
             password=password,
+            auth_type=kwargs.get("auth_type"),
         )
         if user is None:
             raise exceptions.JSONWebTokenError(

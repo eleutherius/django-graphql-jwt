@@ -55,6 +55,7 @@ class JSONWebTokenMiddleware:
 
         if jwt_settings.JWT_ALLOW_ARGUMENT and token_argument is None:
             user = self.cached_authentication.parent(info.path)
+            print(user)
 
             if user is not None:
                 context.user = user
@@ -70,11 +71,15 @@ class JSONWebTokenMiddleware:
             _authenticate(context) or token_argument is not None
         ) and self.authenticate_context(info, **kwargs):
             user = authenticate(request=context, **kwargs)
+            print(user)
 
             if user is not None:
                 context.user = user
 
                 if jwt_settings.JWT_ALLOW_ARGUMENT:
                     self.cached_authentication.insert(info.path, user)
+        print('middleware')
+        print(context)
+        print(info)
 
         return next(root, info, **kwargs)

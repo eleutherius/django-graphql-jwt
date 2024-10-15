@@ -13,6 +13,7 @@ class TokenAuthMixin:
                 {
                     self.user.USERNAME_FIELD: self.user.get_username(),
                     "password": "dolphins",
+                    "auth_type": "email",
                 }
             )
 
@@ -28,6 +29,7 @@ class TokenAuthMixin:
             {
                 self.user.USERNAME_FIELD: self.user.get_username(),
                 "password": "wrong",
+                "auth_type": "email",
             }
         )
 
@@ -112,6 +114,7 @@ class CookieTokenAuthMixin:
             {
                 self.user.USERNAME_FIELD: self.user.get_username(),
                 "password": "dolphins",
+                "auth_type": "email",
             }
         )
 

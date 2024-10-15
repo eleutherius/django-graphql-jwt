@@ -29,6 +29,7 @@ class JSONWebTokenMutation(mixins.ObtainJSONWebTokenMixin, graphene.ClientIDMuta
                     required=True,
                 ),
                 "password": graphene.InputField(graphene.String, required=True),
+                "auth_type": graphene.InputField(graphene.String,required=False),
             },
         )
         return super().Field(*args, **kwargs)
